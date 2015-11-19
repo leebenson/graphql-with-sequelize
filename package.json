@@ -1,0 +1,25 @@
+{
+  "name": "relay-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^5.8.34",
+    "babel-preset-node5": "^6.1.20-3",
+    "bluebird": "^3.0.5",
+    "express": "^4.13.3",
+    "express-graphql": "^0.4.4",
+    "faker": "^3.0.1",
+    "graphql": "^0.4.12",
+    "graphql-relay": "^0.3.5",
+    "lodash": "^3.10.1",
+    "pg": "^4.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.13.0"
+  }
+}
