@@ -7,7 +7,6 @@ import {
   GraphQLNonNull
 } from 'graphql';
 
-import P from 'bluebird';
 import Db from './db';
 
 const Post = new GraphQLObjectType({
@@ -92,8 +91,6 @@ const Query = new GraphQLObjectType({
           }
         },
         resolve (root, args) {
-          console.log('root=', root);
-          console.log('args=', args);
           return Db.models.person.findAll({ where: args });
         }
       },
@@ -101,20 +98,6 @@ const Query = new GraphQLObjectType({
         type: new GraphQLList(Post),
         resolve (root, args) {
           return Db.models.post.findAll({ where: args });
-        }
-      },
-      throw: {
-        type: GraphQLString,
-        resolve () {
-          throw new Error('bla bla!');
-        }
-      },
-      throwPromise: {
-        type: GraphQLString,
-        resolve () {
-          return P.try(()=> {
-            throw new Error('bla bla!');
-          });
         }
       }
     };
@@ -139,11 +122,11 @@ const Mutation = new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLString)
           }
         },
-        resolve (source, args, info, query) {
+        resolve (source, args) {
           return Db.models.person.create({
-            firstName: args.firstName.toUpperCase(),
+            firstName: args.firstName,
             lastName: args.lastName,
-            email: args.email
+            email: args.email.toLowerCase()
           });
         }
       }

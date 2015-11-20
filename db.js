@@ -1,7 +1,6 @@
 import Sequelize from 'sequelize';
 import Faker from 'faker';
 import _ from 'lodash';
-import P from 'bluebird';
 
 const Conn = new Sequelize(
   'relay',
@@ -46,18 +45,17 @@ Person.hasMany(Post);
 Post.belongsTo(Person);
 
 Conn.sync({ force: true }).then(()=> {
-  const promises = [];
-
   _.times(10, ()=> {
-    promises.push(Person.create({
+    return Person.create({
       firstName: Faker.name.firstName(),
       lastName: Faker.name.lastName(),
       email: Faker.internet.email()
-    }));
-  });
-
-  return P.all(promises).then(()=> {
-    console.log('fixtures inserted');
+    }).then(person => {
+      return person.createPost({
+        title: `Sample post by ${person.firstName}`,
+        content: 'here is some content'
+      });
+    });
   });
 });
 
