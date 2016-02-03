@@ -4,22 +4,26 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel": "^5.8.34",
-    "babel-preset-node5": "^6.1.20-3",
-    "bluebird": "^3.0.5",
-    "express": "^4.13.3",
+    "babel-core": "^6.4.5",
+    "babel-polyfill": "^6.3.14",
+    "babel-preset-node5": "^10.5.0",
+    "babel-register": "^6.4.3",
+    "babel-relay-plugin": "^0.6.3",
+    "bluebird": "^3.2.1",
+    "express": "^4.13.4",
     "express-graphql": "^0.4.4",
     "faker": "^3.0.1",
-    "graphql": "^0.4.12",
-    "graphql-relay": "^0.3.5",
-    "lodash": "^3.10.1",
-    "pg": "^4.4.3",
+    "graphql": "^0.4.16",
+    "graphql-relay": "^0.3.6",
+    "lodash": "^4.2.1",
+    "pg": "^4.4.4",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.13.0"
+    "sequelize": "^3.19.1"
   }
 }
