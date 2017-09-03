@@ -129,6 +129,28 @@ const Mutation = new GraphQLObjectType({
             email: args.email.toLowerCase()
           });
         }
+      },
+      addPost: {
+        type: Post,
+        args: {
+          userId: {
+            type: GraphQLNonNull(GraphQLInt)
+          },
+          title: {
+            type: GraphQLNonNull(GraphQLString)
+          },
+          content: {
+            type: GraphQLNonNull(GraphQLString)
+          }
+        },
+        resolve (source, args) {
+          return Db.models.user.findById(args.userId).then( user => {
+            return user.createPost({
+              title: args.title,
+              content: args.content
+            });
+          });
+        }
       }
     };
   }
