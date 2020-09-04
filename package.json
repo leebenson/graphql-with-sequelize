@@ -24,6 +24,6 @@
     "lodash": "^4.2.1",
     "pg": "^4.4.4",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.19.1"
+    "sequelize": "^6.3.5"
   }
 }
